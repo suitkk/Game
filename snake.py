@@ -124,15 +124,15 @@ def main():
                 sys.exit()
             if event.type == pygame.KEYDOWN:
                 snake.changedirection(event.key)
-                # 死后按space重新
+                # 死后按space重新开始
                 if event.key == pygame.K_SPACE and isdead:
                     return main()
 
         screen.fill((255, 255, 255))
 
-        # 画蛇身 / 每一步+1分
+        # 画蛇身
         if not isdead:
-            #scores += 1
+            #scores += 1  # 每一步+1分
             snake.move()
         for rect in snake.body:
             pygame.draw.rect(screen, (255, 182, 193), rect, 0)
@@ -158,7 +158,7 @@ def main():
         show_text(screen, (20, 550), 'Scores: ' + str(scores), (223, 223, 223))
 
         pygame.display.update()
-        clock.tick(5)
+        clock.tick(8)
 
 
 if __name__ == '__main__':
